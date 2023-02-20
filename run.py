@@ -10,7 +10,6 @@ cve_id = cve_info["id"]
 cvss_score = cve_info["cvss_score"]
 severity = cve_info["severity"]
 description = cve_info["description"]
-cve_configurations = cve_info["configurations"]
 
 # appeler la fonction create_json_file() pour ajouter les informations de la CVE au fichier JSON
-create_json_file(cve_id, cvss_score, severity, description, cve_configurations)
+create_json_file(cve_id, cvss_score, severity, description)

@@ -2,7 +2,7 @@ import datetime
 import os
 import json
 
-def create_json_file(cve_id, cvss_score, severity, description, configurations):
+def create_json_file(cve_id, cvss_score, severity, description):
     # récupérer la date actuelle au format jj_mm_aaaa
     date = datetime.date.today().strftime("%d_%m_%Y")
 
@@ -18,9 +18,7 @@ def create_json_file(cve_id, cvss_score, severity, description, configurations):
         cves = {"date": date, "cves": []}
 
     # ajouter la nouvelle CVE
-    new_cve = {"id": cve_id, "cvss_score": cvss_score, "severity": severity, "description": description, "configurations": []}
-    for config in configurations:
-        new_cve["configurations"].append(config)
+    new_cve = {"id": cve_id, "cvss_score": cvss_score, "severity": severity, "description": description}
 
     cves["cves"].append(new_cve)
 
