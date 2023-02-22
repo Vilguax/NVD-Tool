@@ -1,7 +1,20 @@
+#config.py
+
 import os
 
 # CVE à scraper 
-CVE_ID = "CVE-2019-0708"
+#CVE_ID = "CVE-2019-0708"
+
+import nvdlib as nvd
+import datetime
+
+end = datetime.datetime.now()
+last4h = end - datetime.timedelta(hours=4)
+
+last_4_h_cves = nvd.searchCVE(lastModStartDate=last4h, lastModEndDate=end)
+
+CVE_ID = [getattr(cve, 'id') for cve in last_4_h_cves]
+
 
 # Fichier contenant le compteur de CVEs traitées
 CVE_COUNT_FILE = os.path.join(os.path.dirname(__file__), "data/cve_count.txt")

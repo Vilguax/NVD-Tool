@@ -1,3 +1,5 @@
+#content/content_cve.py
+
 import re
 import nvdlib as nvd
 from config import CVE_ID
@@ -8,8 +10,24 @@ def extract_cve_info(cve_id):
         cve = nvd.searchCVE(cveId=cve_id)[0]
 
         cve_id = CVE_ID
-        cve_cvss_score = cve.v30score
-        cve_severity = cve.v30severity
+            
+        try:
+            cve_cvss_score = cve.v30score
+        except AttributeError:
+            try:
+                cve_cvss_score = cve.v31score
+            except AttributeError:
+                cve_cvss_score = '//'
+        
+        try:
+            cve_severity = cve.v30severity
+        except AttributeError:
+            try:
+                cve_severity = cve.v31severity
+            except AttributeError:
+                cve_severity = '//'
+
+
         cve_description = cve.descriptions[0].value
 
         configurations = []
