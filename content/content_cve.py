@@ -11,21 +11,43 @@ def extract_cve_info(cve_id):
 
         cve_id = cve.id
             
-        try:
-            cve_cvss_score = cve.v30score
-        except AttributeError:
-            try:
-                cve_cvss_score = cve.v31score
-            except AttributeError:
-                cve_cvss_score = '//'
+        # try:
+        #     cve_cvss_score = cve.v31score
+        # except AttributeError:
+        #     try:
+        #         cve_cvss_score = cve.v30score
+        #     except AttributeError:
+        #         try:
+        #             cve_cvss_score = '//'
+        #         except: 
+        #             cve_cvss_score = '//'
         
-        try:
+        # try:
+        #     cve_severity = cve.v31severity
+        # except AttributeError:
+        #     try:
+        #         cve_severity = cve.v30severity
+        #     except AttributeError:
+        #         try:
+        #             cve_cvss_score = '//'
+        #         except: 
+        #             cve_cvss_score = '//'
+        
+        if hasattr(cve, 'v31score'):
+            cve_cvss_score = cve.v31score
+            cve_severity = cve.v31severity
+        elif hasattr(cve, 'v30score'):
+            cve_cvss_score = cve.v30score
             cve_severity = cve.v30severity
-        except AttributeError:
-            try:
-                cve_severity = cve.v31severity
-            except AttributeError:
-                cve_severity = '//'
+        else:
+            cve_cvss_score = '//'
+            cve_severity = '//'
+
+        if cve_cvss_score == '': # remplacer par '//'
+            cve_cvss_score = '//'
+
+        if cve_severity == '': # remplacer par '//'
+            cve_severity = '//'
 
 
         cve_description = cve.descriptions[0].value
@@ -51,5 +73,5 @@ def extract_cve_info(cve_id):
             "configurations": configurations
         }
     except Exception as e:
-        print(f"An error occurred while extracting CVE information: {str(e)}")
+        print(f"La CVE {cve_id} semble être récente et n'est pas encore complète dans la base de données NVD.")
         return None
