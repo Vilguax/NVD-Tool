@@ -17,10 +17,15 @@ Fichiers
 Le projet contient les fichiers suivants :
 
 run.py: le fichier principal qui extrait les informations sur les vulnérabilités CVE et les enregistre dans des fichiers JSON.
+
 config.py: le fichier de configuration qui contient les identifiants des vulnérabilités CVE à extraire, ainsi que d'autres paramètres de configuration.
+
 data/serialization.py: le module de sérialisation pour les objets CVE.
+
 data/traitement.py: le module de traitement pour la création de fichiers JSON.
+
 content/content_cve.py: le module de récupération d'informations sur les vulnérabilités CVE.
+
 export/dont_delete.md: un fichier pour indiquer qu'il ne faut pas supprimer le dossier d'export.
 
 Export
