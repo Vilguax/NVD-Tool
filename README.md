@@ -1,4 +1,4 @@
-Projet CVE Scraper
+Projet NVD-tool
 
 Le projet CVE Scraper est un script Python qui récupère les informations les plus récentes sur les vulnérabilités CVE (Common Vulnerabilities and Exposures) de la base de données du National Vulnerability Database (NVD) et les exporte dans des fichiers JSON.
 
