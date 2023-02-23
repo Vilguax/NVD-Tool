@@ -11,4 +11,3 @@ for i in CVE_ID:
     configurations = cve_info["configurations"]
     
     create_json_file(i, cvss_score, severity, description, configurations)
-    
