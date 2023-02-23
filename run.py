@@ -1,3 +1,5 @@
+#run.py
+
 from content.content_cve import extract_cve_info
 from data.traitement import create_json_file
 from config import CVE_ID
