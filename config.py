@@ -1,12 +1,11 @@
 #config.py
 
 import os
+import nvdlib as nvd
+import datetime
 
 # CVE à scraper 
 #CVE_ID = "CVE-2019-0708"
-
-import nvdlib as nvd
-import datetime
 
 end = datetime.datetime.now()
 last4h = end - datetime.timedelta(hours=4)
