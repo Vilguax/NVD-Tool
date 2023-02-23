@@ -13,7 +13,7 @@ Le script est exécuté à l'aide du fichier run.py, qui extrait les information
 Configuration
 Le script utilise le fichier config.py pour récupérer les identifiants des vulnérabilités CVE à extraire. Vous pouvez modifier les identifiants des vulnérabilités dans ce fichier pour extraire les informations sur d'autres CVE.
 
-Fichiers
+Fichiers :
 Le projet contient les fichiers suivants :
 
 run.py: le fichier principal qui extrait les informations sur les vulnérabilités CVE et les enregistre dans des fichiers JSON.
