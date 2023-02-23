@@ -9,7 +9,7 @@ def extract_cve_info(cve_id):
     try:
         cve = nvd.searchCVE(cveId=cve_id)[0]
 
-        cve_id = CVE_ID
+        cve_id = cve.id
             
         try:
             cve_cvss_score = cve.v30score
