@@ -11,28 +11,6 @@ def extract_cve_info(cve_id):
 
         cve_id = cve.id
             
-        # try:
-        #     cve_cvss_score = cve.v31score
-        # except AttributeError:
-        #     try:
-        #         cve_cvss_score = cve.v30score
-        #     except AttributeError:
-        #         try:
-        #             cve_cvss_score = '//'
-        #         except: 
-        #             cve_cvss_score = '//'
-        
-        # try:
-        #     cve_severity = cve.v31severity
-        # except AttributeError:
-        #     try:
-        #         cve_severity = cve.v30severity
-        #     except AttributeError:
-        #         try:
-        #             cve_cvss_score = '//'
-        #         except: 
-        #             cve_cvss_score = '//'
-        
         if hasattr(cve, 'v31score'):
             cve_cvss_score = cve.v31score
             cve_severity = cve.v31severity
