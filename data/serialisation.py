@@ -1,6 +1,6 @@
-#data/serialization.py
+#data/serialisation.py
 
-def serialize_cves(cve, cvss_score, description, configurations):
+def serialise_cves(cve, cvss_score, description, configurations):
     if hasattr(cve, 'v30score'):
         cvss_score = cve.v30score
     if hasattr(cve, 'v30severity'):

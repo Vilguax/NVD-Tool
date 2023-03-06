@@ -3,7 +3,7 @@
 import os
 import json
 from datetime import date, datetime
-from .serialization import serialize_cves
+from .serialisation import serialise_cves
 
 def create_json_file(cve_id, cvss_score, severity, description, configurations):
     # récupérer la date actuelle au format jj_mm_aaaa
@@ -44,4 +44,4 @@ def create_json_file(cve_id, cvss_score, severity, description, configurations):
 
     # enregistrer les CVEs dans le fichier JSON
     with open(file_path, "w") as f:
-        json.dump(cves, f, indent=4, default=lambda x: serialize_cves(x, cvss_score=cvss_score, description=description, configurations=configurations))
+        json.dump(cves, f, indent=4, default=lambda x: serialise_cves(x, cvss_score=cvss_score, description=description, configurations=configurations))
