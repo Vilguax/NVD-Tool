@@ -1,13 +1,10 @@
 #test.py
 #Fichier de test pour l'ajout de fonctionnalités au projet
 
-import nvdlib as nvd
+import datetime
 
-r = nvd.searchCVE(cveId='CVE-2020-1920')[0]
+end = datetime.datetime.now()
+last4h = end - datetime.timedelta(days=4)
 
-conf = r.configurations
+print(end, last4h)
 
-for i in conf:
-    print(i)
-    
-    
