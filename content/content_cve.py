@@ -36,11 +36,27 @@ def extract_cve_info(cve_id):
 
             txt = ', '.join(str(x) for x in conf)
 
+            cpe_parsed = ''
+
+        configurations = []
+        for i, config in enumerate(cve.configurations):
+            conf = config.nodes
+            txt = ', '.join(str(x) for x in conf)
+            cpe_parsed = ''
+            version_start = ''
+            version_end = ''
             for match in re.finditer(r'cpe:2.3:', txt):
                 cpe = txt[match.start():].split()[0][:-2].split(":")
                 cpe_parsed = ":".join(cpe[:3] + cpe[4:6] + ["*", "*", "*", "*", "*", "*"])
-                configurations.append((cpe_parsed, i+1))
+                configurations.append((cpe_parsed, i+1, version_start, version_end))
+            for match in re.finditer(r'versionStartIncluding:\s*([^\s,]+)', txt):
+                version_start = match.group(1)
+            for match in re.finditer(r'versionEndExcluding:\s*([^\s,]+)', txt):
+                version_end = match.group(1)
+                
+        configurations.append((cpe_parsed, i+1, version_start, version_end))
 
+                
         create_json_file(cve_id, cve_cvss_score, cve_severity, cve_description, configurations)
 
         return {

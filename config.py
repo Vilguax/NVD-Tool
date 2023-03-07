@@ -8,7 +8,7 @@ import datetime
 #CVE_ID = "CVE-2019-0708"
 
 end = datetime.datetime.now()
-last4h = end - datetime.timedelta(hours=4)
+last4h = end - datetime.timedelta(days=4)
 
 last_4_h_cves = nvd.searchCVE(lastModStartDate=last4h, lastModEndDate=end)
 
