@@ -2,7 +2,6 @@
 
 import re
 import nvdlib as nvd
-from config import CVE_ID
 from data.traitement import create_json_file
 
 def extract_cve_info(cve_id):
